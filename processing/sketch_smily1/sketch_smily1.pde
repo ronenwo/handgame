@@ -7,8 +7,15 @@ String val = "none";
 boolean firstContact = false;
 int counter = 0;
 
+PImage smileMove, smileFreeze;
+
+int valOld = 0;
+int valCurrent = 0;
+
 void setup() 
 {
+  smileMove = loadImage("smiley1.jpg");
+  smileFreeze = loadImage("smiley2.jpg");
   size(200,200); //make our canvas 200 x 200 pixels big
   String portName = Serial.list()[2]; //change the 0 to a 1 or 2 etc. to match your port
   myPort = new Serial(this, portName, 9600);
@@ -23,6 +30,21 @@ void draw(){
   String txt = "sensor=" + val;
   fill(0);
   text(val, 100,100);
+  try {
+    valCurrent = Integer.parseInt(val);
+  }
+  catch (NumberFormatException e) {
+     println("val not number"); 
+  }
+  if (frameCount%10==0){
+    valOld = valCurrent;
+  }
+  if ( Math.abs(valOld - valCurrent) > 5 ){
+     image(smileMove,0,0,width,height); 
+  }
+  else{
+    image(smileFreeze,0,0,width,height);
+  }
   
 }
 
