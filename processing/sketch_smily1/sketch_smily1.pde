@@ -19,8 +19,11 @@ void setup()
 
 
 void draw(){
+  background(255);
   String txt = "sensor=" + val;
+  fill(0);
   text(val, 100,100);
+  
 }
 
 //void establishContact() {
