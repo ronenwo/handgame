@@ -71,7 +71,8 @@ void loop() {
   
   // fade the LED using the calibrated value:
 //  analogWrite(ledPin, sensorValue);
-  
+
+    
 
 }
 
@@ -94,8 +95,8 @@ void calibrate() {
 
 void establishContact() {
   while (Serial.available() <= 0) {
-  Serial.println("A");   // send a capital A
-  delay(300);
+    Serial.println("A");   // send a capital A
+    delay(300);
   }
 }
 
